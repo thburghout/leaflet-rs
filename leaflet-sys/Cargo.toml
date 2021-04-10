@@ -1,0 +1,12 @@
+[package]
+name = "leaflet-sys"
+version = "0.1.0"
+authors = ["Thomas Burghout <th.burghout@outlook.com>"]
+license = "MIT"
+description = "A wasm-bindgen wrapper for Leaflet.js"
+homepage = "https://gitlab.com/thburghout/leaflet-rs"
+repository = "https://gitlab.com/thburghout/leaflet-rs"
+edition = "2018"
+
+[dependencies]
+leaflet = { git = "https://github.com/thburghout/leaflet-rs", branch = "add-event-details" }

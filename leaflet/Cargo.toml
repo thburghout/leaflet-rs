@@ -1,0 +1,32 @@
+[package]
+name = "leaflet"
+version = "0.1.0"
+authors = ["Thomas Burghout <th.burghout@outlook.com>"]
+license = "MIT"
+description = "A clean Rust wrapper for the wasm-bindgen wrapper of Leaflet.js"
+homepage = "https://gitlab.com/thburghout/leaflet-rs"
+repository = "https://gitlab.com/thburghout/leaflet-rs"
+edition = "2018"
+
+[dependencies]
+leaflet-sys = { path = "../leaflet-sys" }
+wasm-bindgen = { version = "0.2", features = ["serde-serialize"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+yew = { version = "0.17", optional = false }
+rand = { version = "0.8", optional = false }
+getrandom = { version = "0.2", features = ["js"] }
+derive_more = { version = "0.99", optional = false }
+
+[features]
+front-end-yew = []
+
+[dev-dependencies]
+
+
+[dev-dependencies.web-sys]
+version = "0.3"
+features = [
+    "console"
+]

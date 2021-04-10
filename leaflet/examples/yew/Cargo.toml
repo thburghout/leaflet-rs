@@ -1,0 +1,9 @@
+[package]
+name = "leaflet-yew-example"
+version = "0.1.0"
+authors = ["Your Name <email@address.com>"]
+edition = "2018"
+
+[dependencies]
+yew = "0.17"
+leaflet = { path = "../../", features = ["front-end-yew"] }
