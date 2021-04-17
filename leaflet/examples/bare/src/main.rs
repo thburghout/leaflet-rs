@@ -1,5 +1,5 @@
-use leaflet::{Map, LatLng, Marker};
-use leaflet::sys::{TileLayer, Circle};
+use leaflet::{Map, LatLng, Marker, TileLayer};
+use leaflet::sys::Circle;
 use wasm_bindgen::JsValue;
 
 // A macro to provide `println!(..)`-style syntax for `console.log` logging.
@@ -15,18 +15,17 @@ fn main() {
     let mut map = Map::new("mymap");
     map.set_view((51.505, -0.09).into(), 13.0);
 
-    let tiles = TileLayer::new(
-        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-        &JsValue::from_serde(&serde_json::json!({
+    let tiles = TileLayer::new_with_options(
+        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}".to_owned(),
+        serde_json::json!({
             "attribution": "Map data &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
             "maxZoom": 18,
             "id": "mapbox/streets-v11",
             "tileSize": 512,
             "zoomOffset": -1,
             "accessToken": env!("MAPBOX_TOKEN"),
-        })).unwrap(),
-    );
-    tiles.addTo(map.inner());
+        }));
+    tiles.add_to(&map);
 
 
     let marker = Marker::new((51.5, -0.09).into());

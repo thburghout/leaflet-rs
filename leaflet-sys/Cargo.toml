@@ -9,4 +9,4 @@ repository = "https://gitlab.com/thburghout/leaflet-rs"
 edition = "2018"
 
 [dependencies]
-leaflet = { git = "https://github.com/thburghout/leaflet-rs", branch = "add-event-details" }
+leaflet = { git = "https://github.com/thburghout/leaflet-sys-rs", branch = "add-event-details" }

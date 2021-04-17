@@ -6,4 +6,5 @@ edition = "2018"
 
 [dependencies]
 yew = "0.17"
+serde_json = "1.0"
 leaflet = { path = "../../", features = ["front-end-yew"] }
