@@ -7,6 +7,7 @@ use rand::distributions::Alphanumeric;
 use rand::{thread_rng, Rng};
 use std::collections::HashMap;
 use crate::LatLng;
+use crate::tile_layer::TileLayer;
 
 pub struct Map {
     props: MapProps,
@@ -22,6 +23,8 @@ pub struct Map {
 #[derive(Properties, Clone, PartialEq)]
 pub struct MapProps {
     pub children: ChildrenRenderer<MapElements>,
+
+    pub tile_layer: TileLayer,
 
     pub center: LatLng,
 
@@ -98,18 +101,7 @@ impl Map {
     fn init(&mut self) {
         let mut map = crate::Map::new(&self.id);
         map.set_view(self.props.center.into(), self.props.zoom.into());
-        let layer = sys::TileLayer::new(
-            "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-            &JsValue::from_serde(&serde_json::json!({
-                "attribution": "Map data &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
-                "maxZoom": 18,
-                "id": "mapbox/streets-v11",
-                "tileSize": 512,
-                "zoomOffset": -1,
-                "accessToken": env!("MAPBOX_TOKEN"),
-            })).unwrap(),
-        );
-        layer.addTo(map.inner());
+        self.props.tile_layer.add_to(&map);
         self.map = Some(map);
         for (id, marker) in self.props.markers() {
             self.update_markers.push((id, marker))

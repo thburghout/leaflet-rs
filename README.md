@@ -25,10 +25,17 @@ Or with support for the front-end framework [Yew](https://yew.rs/docs/en/):
 leaflet = { git = "https://gitlab.com/thburghout/leaflet-rs.git", features = ["front-end-yew"] }
 ```
 
-Each supported interface comes with a example which can be directly run and viewed using [Trunk](https://github.com/thedodd/trunk):
+Each supported interface comes with a example which can be directly run and 
+viewed using [Trunk](https://github.com/thedodd/trunk).
+First install `trunk` through `cargo install trunk`.
+The examples use the [Mapbox](https://www.mapbox.com/) API to obtain the tiles, 
+obtain an API key and add it to your environment variables 
+`export MAPBOX_TOKEN=the_token` before building. 
+The following examples can be build & viewed by executing `trunk serve` in the 
+respective project directories.
 
-- [Rust only](leaflet/examples/bare/src/main.rs)
-- [Yew](leaflet/examples/yew/src/main.rs)
+- [Rust only](leaflet/examples/bare)
+- [Yew](leaflet/examples/yew)
 
 ## Features
 
@@ -38,7 +45,8 @@ Contributions welcome.
 
 | Feature | Bare Rust | Yew |
 | ------- | --------- | --- |
-| Map |  :white_check_mark: | :white_check_mark: |
-| TileLayer | | |
+| Map | :white_check_mark: | :white_check_mark: |
+| TileLayer | :white_check_mark: | :white_check_mark: |
 | Marker | :white_check_mark: |  :white_check_mark: |
 | Polyline | :white_check_mark: | :white_check_mark: |
+| ... |  |  |
